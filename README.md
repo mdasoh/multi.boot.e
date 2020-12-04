@@ -1,3 +1,4 @@
+<pre>
 # multi.boot.e
 
 prerequisites:
@@ -20,3 +21,4 @@ next up:
 2. tidy it up
 3. add physical memory management code from mm.e
 
+</pre>
