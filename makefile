@@ -3,14 +3,14 @@ HOME = /root
 MNT = /b
 SRC = $(HOME)/src/multi.boot.e
 
-run: all
+run: $(SRC)/m2-0014.144
 	qemu-system-x86_64 \
 	-drive file=$(SRC)/m2-0014.144,cache=none,format=raw,if=floppy,index=0 \
 	-netdev tap,id=nd0,br=eth0 -device ne2k_pci,netdev=nd0,mac=00:03:12:34:56:78 \
 	-vga virtio -display gtk,gl=on \
 	-enable-kvm -k en-us -monitor stdio -m 256 -boot a
 
-all: m2.bin $(SRC)/m2-0014.144
+$(SRC)/m2-0014.144: m2.bin
 	mount -t vfat -o loop,shortname=lower $(SRC)/m2-0014.144 $(MNT)
 	cp -a m2.bin $(MNT)/sys
 	umount $(MNT)
