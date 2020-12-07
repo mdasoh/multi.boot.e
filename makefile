@@ -1,6 +1,6 @@
 
 HOME = /root
-MNT = /b
+#MNT = /b
 SRC = $(HOME)/src/multi.boot.e
 
 run: $(SRC)/m2-0014.144
@@ -11,9 +11,10 @@ run: $(SRC)/m2-0014.144
 	-enable-kvm -k en-us -monitor stdio -m 256 -boot a
 
 $(SRC)/m2-0014.144: m2.bin
-	mount -t vfat -o loop,shortname=lower $(SRC)/m2-0014.144 $(MNT)
-	cp -a m2.bin $(MNT)/sys
-	umount $(MNT)
+	mcopy -o -i $(SRC)/m2-0014.144 m2.bin ::sys
+	#mount -t vfat -o loop,shortname=lower $(SRC)/m2-0014.144 $(MNT)
+	#cp -a m2.bin $(MNT)/sys
+	#umount $(MNT)
 
 m2.o: m2.asm
 	nasm -f elf32 -o m2.o m2.asm

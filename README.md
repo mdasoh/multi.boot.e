@@ -2,7 +2,7 @@
 # multi.boot.e
 
 prerequisites:
-$ sudo apt-get install qemu-system-x86 nasm
+$ sudo apt-get install qemu-system-x86 mtools nasm
 $ an i586 or i686 toolchain here: https://wiki.osdev.org/GCC_Cross-Compiler#Prebuilt_Toolchains
 next the floppy image: http://show.ing.me/m2-0014.144.gz ;decompress with $ gzip -d m2-0014.144
 
