@@ -1,5 +1,6 @@
 
 HOME = /root
+MNT = /b
 
 run: all
 	qemu-system-x86_64 \
@@ -9,9 +10,9 @@ run: all
 	-enable-kvm -k en-us -monitor stdio -m 256 -boot a
 
 all: m2.bin $(HOME)/src/m2/m2-0014.144
-	mount -t vfat -o loop,shortname=lower $(HOME)/src/multi.boot.e/m2-0014.144 /b
-	cp -a m2.bin /b/sys
-	umount /b
+	mount -t vfat -o loop,shortname=lower $(HOME)/src/multi.boot.e/m2-0014.144 $(MNT)
+	cp -a m2.bin $(MNT)/sys
+	umount $(MNT)
 
 m2.o: m2.asm
 	nasm -f elf32 -o m2.o m2.asm
